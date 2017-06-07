@@ -13,7 +13,9 @@ import com.kotlinmobile.cn.R
 import com.kotlinmobile.cn.activity.ComicActivity
 import com.kotlinmobile.cn.adapter.CoverAdapter
 import com.kotlinmobile.cn.model.Cover
+import com.kotlinmobile.cn.network.CoverSource
 import org.jetbrains.anko.async
+import org.jetbrains.anko.uiThread
 
 /**
  * Created by fengxing on 2017/5/31.
@@ -27,6 +29,7 @@ class OnLineCartoonFragment : Fragment() {
     var mData = ArrayList<Cover>()
     lateinit var swipeRefresh: SwipeRefreshLayout
     lateinit var recyclerView: RecyclerView
+    lateinit var adapter: CoverAdapter
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_online, null, false)
@@ -44,7 +47,8 @@ class OnLineCartoonFragment : Fragment() {
 
         recyclerView.layoutManager = GridLayoutManager(activity, 2)
 
-        recyclerView.adapter = CoverAdapter { view: View, position: Int -> jump2Comic(position) }
+        adapter = CoverAdapter { view: View, position: Int -> jump2Comic(position) }
+        recyclerView.adapter = adapter
 
         swipeRefresh.setOnRefreshListener {
             load()
@@ -54,8 +58,13 @@ class OnLineCartoonFragment : Fragment() {
     }
 
     fun load() {
-        async {
-
+        async() {
+            var data = CoverSource().obtain(AIM_URL)
+            uiThread {
+                mData = data
+                adapter.getData(mData)
+                swipeRefresh.isRefreshing = false
+            }
         }
     }
 
@@ -63,5 +72,12 @@ class OnLineCartoonFragment : Fragment() {
         var intent = Intent(context, ComicActivity().javaClass)
         intent.putExtra(ComicActivity.INTENT_COMIC_URL, mData[position].link)
         startActivity(intent)
+    }
+
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser && mData.size == 0) {
+            load()
+        }
     }
 }
