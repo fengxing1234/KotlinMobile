@@ -74,6 +74,9 @@ class OnLineCartoonFragment : Fragment() {
         startActivity(intent)
     }
 
+    /**
+     * 实现懒加载 fragment的UI是否可见的
+     */
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
         if (isVisibleToUser && mData.size == 0) {
