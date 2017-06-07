@@ -17,7 +17,7 @@ class CoverSource : Source<ArrayList<Cover>> {
         for (element in elements) {
             var coverUrl = element.select("img").attr("src")
             var title = element.select("h1").text() + "\n" + element.select("h2").text()
-            var link = "http://ishuhui.net" + element.select("div.magesMesBox").select("a").attr("href")
+            var link = "http://ishuhui.net" + element.select("div.magesPhoto").select("a").attr("href")
             var cover = Cover(coverUrl, title, link)
             list.add(cover)
         }
