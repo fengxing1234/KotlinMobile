@@ -6,3 +6,9 @@ package com.kotlinmobile.cn.model
 data class Cover(val coverUrl: String, val title: String, val link: String)
 
 data class Comic(val url: String)
+data class Page(val title: String, val url: String)
+data class DetailInfo(val description: String, val updateTime: String)
+data class ListDetail(val pages: List<Page>, val detail: DetailInfo) {
+    operator fun get(position: Int) = pages[position]
+    fun size() = pages.size
+}

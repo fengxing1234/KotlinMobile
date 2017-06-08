@@ -13,7 +13,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <!--改变ToolBar的标题 默认是黑色字体 变成白色的字体了-->
+    <!-- AppBarLayout中设置 改变ToolBar的标题 默认是黑色字体 变成白色的字体了-->
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <!--改变menu菜单的样式-->
     <style name="AppTheme.PopupOverlay" parent="Theme.AppCompat.Light"/>
