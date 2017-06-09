@@ -110,7 +110,7 @@ class ListCartoonDetailActivity : AppCompatActivity() {
         if (R.id.menu_list_detail.equals(item?.itemId)) {
             var info = listDetail.detail
             list_detail_recycler_view.snackbar(info.description + "\n" + info.updateTime)
-        } else if (R.id.home.equals(item?.itemId)) {
+        } else if (android.R.id.home == (item?.itemId)) {
             onBackPressed()
         }
         return super.onOptionsItemSelected(item)

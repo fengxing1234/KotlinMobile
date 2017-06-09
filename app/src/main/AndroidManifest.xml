@@ -35,7 +35,7 @@
         </activity>
         <activity
             android:name=".activity.ListCartoonDetailActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar.Overlay">
 
         </activity>
     </application>
