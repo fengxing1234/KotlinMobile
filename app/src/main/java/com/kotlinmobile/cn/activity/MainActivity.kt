@@ -1,7 +1,7 @@
 package com.kotlinmobile.cn.activity.activity
 
 import com.kotlinmobile.cn.activity.adapter.ContentPagerAdapter
-import com.kotlinmobile.cn.fragment.InforCartoonFragment
+import com.kotlinmobile.cn.fragment.InfoCartoonFragment
 import com.kotlinmobile.cn.fragment.ListCartoonFragment
 import com.kotlinmobile.cn.fragment.OnLineCartoonFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -12,6 +12,7 @@ class MainActivity : android.support.v7.app.AppCompatActivity() {
     //类似java中的静态成员
     companion object {
         val GITHUB_URL = "https://github.com/fengxing1234/KotlinMobile"
+        val BASE_URL = "http://ishuhui.net"
     }
 
     var resNameList = arrayListOf<Int>(com.kotlinmobile.cn.R.string.online_cartoon, com.kotlinmobile.cn.R.string.list_cartoon, com.kotlinmobile.cn.R.string.info_cartoon)
@@ -30,7 +31,7 @@ class MainActivity : android.support.v7.app.AppCompatActivity() {
 
         fragments.add(OnLineCartoonFragment())
         fragments.add(ListCartoonFragment())
-        fragments.add(InforCartoonFragment())
+        fragments.add(InfoCartoonFragment())
 
 
         //this :: getString 代表啥意思

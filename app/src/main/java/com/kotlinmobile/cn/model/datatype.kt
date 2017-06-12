@@ -12,3 +12,6 @@ data class ListDetail(val pages: List<Page>, val detail: DetailInfo) {
     operator fun get(position: Int) = pages[position]
     fun size() = pages.size
 }
+
+data class NewsList(val title: String, val link: String, val subTitle: String, val newsContent: ArrayList<NewsContent>)
+data class NewsContent(val url: String, val title: String, val time: String)
